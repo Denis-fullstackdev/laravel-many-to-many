@@ -43,16 +43,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'title' => 'required|min:5|max:255',
-            'content' => 'required',
-            'category_id' => 'nullable|exists:categories,id'
-        ], [
-            'required' => ':attribute is mandatory',
-            'min' => ':attribute must be at least :min chars long',
-            'max' => ':attribute must be at most :max chars long',
-            'category_id.exists' =>'Category doesn\'t exists anymore'
-        ]);
+        $this->validatePost($request);
 
         $form_data = $request->all();
         $post = new Post();
@@ -101,16 +92,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
-        $request->validate([
-            'title' => 'required|min:5|max:255',
-            'content' => 'required',
-            'category_id' => 'nullable|exists:categories,id'
-        ], [
-            'required' => ':attribute is mandatory',
-            'min' => ':attribute must be at least :min chars long',
-            'max' => ':attribute must be at most :max chars long',
-            'category_id.exists' =>'Category doesn\'t exists anymore'
-        ]);
+        $this->validatePost($request);
 
         $form_data = $request->all();
 
@@ -150,5 +132,18 @@ class PostController extends Controller
             $existingPost = Post::where('slug', $slug)->first();
         }
         return $slug;
+    }
+
+    private function validatePost(Request $request) {
+        $request->validate([
+            'title' => 'required|min:5|max:255',
+            'content' => 'required',
+            'category_id' => 'nullable|exists:categories,id'
+        ], [
+            'required' => ':attribute is mandatory',
+            'min' => ':attribute must be at least :min chars long',
+            'max' => ':attribute must be at most :max chars long',
+            'category_id.exists' =>'Category doesn\'t exists anymore'
+        ]);
     }
 }
