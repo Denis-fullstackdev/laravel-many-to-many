@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name', 'Front Office') }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 
 <body>
-
-    test
+    <div id="root"></div>
 </body>
 
 </html>
