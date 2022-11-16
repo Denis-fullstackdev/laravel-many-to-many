@@ -26,6 +26,8 @@
             <label for="category_id">Categoria</label>
             <select name="category_id">
                 <option value="">Nessuna categoria</option>
+                <option value="150" {{ 150 == old('category_id', $post->category_id) ? 'selected' : '' }}>FORCE ERROR
+                </option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}"
                         {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
