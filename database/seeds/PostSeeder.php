@@ -25,8 +25,7 @@ class PostSeeder extends Seeder
             $existingPost = Post::where('slug', $slug)->first();
             while($existingPost){
                 $slug = $slug_base . '_' . $counter;
-                $existingPost = Post::where('slug', $anotherSlug)->first();
-                // penso vada usato $slug invece di $anotherSlug
+                $existingPost = Post::where('slug', $slug)->first();
                 $counter++;
             }
 
