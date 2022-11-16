@@ -16,14 +16,14 @@
             <input type="text" name="title" required minlength="5" maxlength="255" value="{{ old('title', '') }}">
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
-            @enderror>
+            @enderror
         </div>
         <div @error('content') class='is-invalid' @enderror>
             <label for="content">Contenuto</label>
             <textarea name="content" cols="30" rows="10" required>{{ old('title', '') }}</textarea>
             @error('content')
                 <div class="text-danger">{{ $message }}</div>
-            @enderror>
+            @enderror
         </div>
         <div>
             <input type="submit" value="Invia">
