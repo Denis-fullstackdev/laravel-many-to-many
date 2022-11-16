@@ -22,7 +22,7 @@
         </div>
 
         {{-- categories --}}
-        <div>
+        <div @error('category_id') class='is-invalid' @enderror>
             <label for="category_id">Categoria</label>
             <select name="category_id">
                 <option value="">Nessuna categoria</option>
@@ -37,6 +37,8 @@
             </select>
             @error('category_id')
                 <div class="text-danger">{{ $message }}</div>
+                {{-- @else
+                <div class="text-success">Ricevuto</div> --}}
             @enderror
         </div>
 
