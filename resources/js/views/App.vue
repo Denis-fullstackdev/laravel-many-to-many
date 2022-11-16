@@ -10,9 +10,9 @@ import ExampleComponent from '../components/ExampleComponent.vue';
 
 export default {
     name: 'App',
-    components: [
+    components: {
         ExampleComponent,
-    ]
+    }
 }
 </script>
 

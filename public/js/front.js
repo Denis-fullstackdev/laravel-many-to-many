@@ -1929,7 +1929,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
-  components: [_components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]]
+  components: {
+    ExampleComponent: _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
