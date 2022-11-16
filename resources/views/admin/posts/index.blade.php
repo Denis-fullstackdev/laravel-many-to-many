@@ -11,6 +11,9 @@
         @foreach ($posts as $post)
             <div class="col-12">
                 <a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a>
+                @if ($post->category)
+                    [{{ $post->category->name }}]
+                @endif
             </div>
         @endforeach
     </div>
