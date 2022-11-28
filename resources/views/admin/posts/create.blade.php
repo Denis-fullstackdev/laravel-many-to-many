@@ -54,10 +54,17 @@
         {{-- parentesi quadre in label e input per far capire che lavoriamo con array --}}
         <div @error('tags') class='is-invalid' @enderror>
             <label>Tags:</label>
-            @foreach ($tags as $tag)
-                <label>{{ $tag->name }}</label>
-                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" />
-            @endforeach
+            <div class="container">
+                <div class="row">
+                    @foreach ($tags as $tag)
+                        <div class="col-3">
+                            <label>{{ $tag->name }}</label>
+                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} />
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
         {{-- end tags --}}
 
