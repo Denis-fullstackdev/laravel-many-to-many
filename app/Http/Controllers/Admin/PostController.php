@@ -108,6 +108,12 @@ class PostController extends Controller
             $form_data['slug'] = $slug;
         }
 
+        if(array_key_exists('tags', $form_data)){
+            $post->tags()->sync($form_data['tags']);
+        } else {
+            $post->tags()->sync([]);
+        }
+
 
         $post->update($form_data);
 
