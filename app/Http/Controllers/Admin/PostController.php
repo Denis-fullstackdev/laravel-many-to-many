@@ -136,11 +136,13 @@ class PostController extends Controller
         return $slug;
     }
 
+    // tags: al validatore va bene sia che gli arrivi un valore o una stringa di valori, grazie ad una feature del framework
     private function validatePost(Request $request) {
         $request->validate([
             'title' => 'required|min:5|max:255',
             'content' => 'required',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'exists:tags,id'
         ], [
             'required' => ':attribute is mandatory',
             'min' => ':attribute must be at least :min chars long',
