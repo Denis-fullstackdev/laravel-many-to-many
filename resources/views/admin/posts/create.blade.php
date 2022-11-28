@@ -24,8 +24,11 @@
             <label for="category_id">Categoria</label>
             <select name="category_id">
                 <option value="">Nessuna categoria</option>
-                <option value="150" {{ 150 == old('category_id', $post->category_id) ? 'selected' : '' }}>FORCE ERROR
-                </option>
+                {{--
+                    <option value="150" {{ 150 == old('category_id', $post->category_id) ? 'selected' : '' }}>FORCE ERROR
+                    </option>
+                    mi da errore su $post
+                --}}
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" {{ $category->id == old('category_id', -1) ? 'selected' : '' }}>
                         {{ $category->name }}
@@ -36,6 +39,7 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+        {{-- end categories --}}
 
         <div @error('content') class='is-invalid' @enderror>
             <label for="content">Contenuto</label>
@@ -44,8 +48,22 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+
+        {{-- tags --}}
+        {{-- parentesi quadre in label e input per far capire che lavoriamo con array --}}
+        <div @error('tags') class='is-invalid' @enderror>
+            <label>Tags:</label>
+            @foreach ($tags as $tag)
+                <label>{{ $tag->name }}</label>
+                <input type="checkbox" name="tags[]" value="{{ $tag->id }}" />
+            @endforeach
+        </div>
+        {{-- end tags --}}
+
         <div>
             <input type="submit" value="Invia">
         </div>
+
     </form>
 @endsection
