@@ -58,9 +58,9 @@
                 <div class="row">
                     @foreach ($tags as $tag)
                         <div class="col-3">
-                            <label>{{ $tag->name }}</label>
                             <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
                                 {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} />
+                            <label>{{ $tag->name }}</label>
                         </div>
                     @endforeach
                 </div>

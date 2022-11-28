@@ -74,9 +74,9 @@
                     <div class="row">
                         @foreach ($tags as $tag)
                             <div class="col-3">
-                                <label>{{ $tag->name }}</label>
                                 <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
                                     {{ $post->tags->contains($tag) ? 'checked' : '' }} />
+                                <label>{{ $tag->name }}</label>
                             </div>
                         @endforeach
                     </div>
