@@ -3,7 +3,7 @@
 @section('content')
     <div class="row mb-5">
         <div class="col-12">
-            <a href="{{ route('admin.categories.create') }}">Nuovo Post</a>
+            <a href="{{ route('admin.categories.create') }}">Nuova Categoria</a>
         </div>
     </div>
 
