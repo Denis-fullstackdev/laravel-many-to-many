@@ -85,6 +85,7 @@ class PostController extends Controller
     {
         //
         $categories = Category::all();
+        $tags = Tag::all();
         return view('admin.posts.edit', compact(['post', 'categories']));
     }
 
