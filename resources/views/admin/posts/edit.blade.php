@@ -49,6 +49,43 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+
+        {{-- tags --}}
+        @if ($errors->any())
+            <div @error('tags') class='is-invalid' @enderror>
+                <label>Tags:</label>
+                <div class="container">
+                    <div class="row">
+                        @foreach ($tags as $tag)
+                            <div class="col-3">
+                                <label>{{ $tag->name }}</label>
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                    {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} />
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @else
+            <div>
+                <label>Tags:</label>
+                <div class="container">
+                    <div class="row">
+                        @foreach ($tags as $tag)
+                            <div class="col-3">
+                                <label>{{ $tag->name }}</label>
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                    {{ $post->tags->contains($tag) ? 'checked' : '' }} />
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        {{-- end tags --}}
+
         <div>
             <input type="submit" value="Aggiorna">
         </div>
