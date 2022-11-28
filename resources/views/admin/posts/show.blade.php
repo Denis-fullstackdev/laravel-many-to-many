@@ -15,7 +15,11 @@
     </div>
 
     @if ($post->category)
-        <h3>{{ $post->category->name }}</h3>
+        <h3>
+            <a href="{{ route('admin.categories.show', $post->category->id) }}">
+                {{ $post->category->name }}
+            </a>
+        </h3>
     @else
         <h3>Nessuna categoria</h3>
     @endif
