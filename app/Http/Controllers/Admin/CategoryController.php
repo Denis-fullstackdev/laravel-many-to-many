@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Category;
 
+use Illuminate\Support\Str;
+
 class CategoryController extends Controller
 {
     /**
@@ -29,6 +31,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.categories.create');
     }
 
     /**
@@ -40,6 +43,23 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|max:30'
+        ],
+        [
+            'required' => 'Il campo è obbligatorio',
+            'max' => 'Il nome deve avere al massimo :max caratteri'
+        ]);
+
+        $form_data = $request->all();
+        $category = new Category();
+        $category->fill($form_data);
+        $slug = $this->getSlug($category->name);
+        $category->slug = $slug;
+        $category->save();
+
+        return redirect()->route('admin.categories.show', $category->id);
+
     }
 
     /**
@@ -87,4 +107,20 @@ class CategoryController extends Controller
     {
         //
     }
+
+    // TODO: trait
+    private function getSlug($name) {
+        $slug = Str::slug($name);
+        $slug_base = $slug;
+
+        $existingCategory = Category::where('slug', $slug)->first();
+        $counter = 1;
+        while($existingCategory){
+            $slug = $slug_base . '_' . $counter;
+            $counter++;
+            $existingCategory = Category::where('slug', $slug)->first();
+        }
+        return $slug;
+    }
+
 }
