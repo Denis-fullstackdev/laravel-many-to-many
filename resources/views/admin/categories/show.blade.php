@@ -4,7 +4,7 @@
     <h1>{{ $category->name }}</h1>
 
     <div class="mb-4 mt-4">
-        <a href="{{ route('admin.categories.edit', $category->id) }}">Modifica nome categoria</a>
+        <a href="{{ route('admin.categories.edit', $category->slug) }}">Modifica nome categoria</a>
     </div>
 
     <div class="mb-5">
