@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.categories.update', $category->id) }}">
+    <form method="POST" action="{{ route('admin.categories.update', $category->slug) }}">
         @csrf
         @method('PUT')
 
