@@ -68,10 +68,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Category $category)
     {
         //
-        $category = Category::where('slug', $slug)->first();
 
         return view('admin.categories.show', compact('category'));
     }
@@ -82,10 +81,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Category $category)
     {
         //
-        $category = Category::where('slug', $slug)->first();
 
         return view('admin.categories.edit', compact('category'));
     }
@@ -117,7 +115,7 @@ class CategoryController extends Controller
 
         $category->update($form_data);
 
-        return redirect()->route('admin.categories.show', $category->id);
+        return redirect()->route('admin.categories.show', $category->slug);
     }
 
     /**
