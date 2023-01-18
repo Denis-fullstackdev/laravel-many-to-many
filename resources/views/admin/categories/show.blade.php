@@ -9,11 +9,11 @@
 
     <div class="mb-5">
         {{-- <a href="{{ route('admin.categories.destroy', $category->id) }}">Cancella categoria</a> //NON SI PUO' FARE IN QUESTO MODO --}}
-        <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}">
+        <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" onsubmit="confirmation(event)">
             @csrf
             @method('DELETE')
             <div>
-                <input type="submit" value="Cancella categoria" onclick="confirm('Sei sicuro di voler cancellare?')">
+                <input type="submit" value="Cancella categoria" class="btn btn-danger">
             </div>
         </form>
     </div>
@@ -30,3 +30,12 @@
         </div>
     @endforeach
 @endsection
+
+<script>
+    function confirmation(event) {
+        const confirmDelete = confirm("Sei sicuro di voler cancellare la categoria?");
+        if (!confirmDelete) {
+            event.preventDefault();
+        }
+    }
+</script>
