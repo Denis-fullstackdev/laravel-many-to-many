@@ -9,7 +9,7 @@
 
     <div class="mb-5">
         {{-- <a href="{{ route('admin.categories.destroy', $category->id) }}">Cancella categoria</a> //NON SI PUO' FARE IN QUESTO MODO --}}
-        <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" onsubmit="confirmation(event)">
+        <form method="POST" action="{{ route('admin.categories.destroy', $category->slug) }}" onsubmit="confirmation(event)">
             @csrf
             @method('DELETE')
             <div>
