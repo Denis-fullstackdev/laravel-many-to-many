@@ -23,7 +23,7 @@
     @foreach ($category->posts as $post)
         <div>
             <p>
-                <a href="{{ route('admin.posts.show', $post->id) }}">
+                <a href="{{ route('admin.posts.show', $post->slug) }}">
                     {{ $post->title }}
                 </a>
             </p>

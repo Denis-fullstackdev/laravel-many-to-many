@@ -27,11 +27,11 @@
 
 
     <div class="mt-5">
-        <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+        <a href="{{ route('admin.posts.edit', $post->slug) }}">Edit</a>
     </div>
 
     <div class="mt-1">
-        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+        <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST">
             @csrf
             @method('DELETE')
             <input type="submit" value="Cancella" onclick="confirm('Are you sure?')">

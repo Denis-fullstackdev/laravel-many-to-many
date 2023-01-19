@@ -60,7 +60,7 @@ class PostController extends Controller
             $post->tags()->sync($form_data['tags']);
         }
 
-        return redirect()->route('admin.posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
@@ -117,7 +117,7 @@ class PostController extends Controller
 
         $post->update($form_data);
 
-        return redirect()->route('admin.posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**

@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.posts.update', $post->id) }}">
+    <form method="POST" action="{{ route('admin.posts.update', $post->slug) }}">
         @csrf
         @method('PATCH')
         <div @error('title') class='is-invalid' @enderror>
