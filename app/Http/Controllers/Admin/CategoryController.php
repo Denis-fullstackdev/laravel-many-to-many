@@ -58,7 +58,7 @@ class CategoryController extends Controller
         $category->slug = $slug;
         $category->save();
 
-        return redirect()->route('admin.categories.show', $category->id);
+        return redirect()->route('admin.categories.show', $category->slug);
 
     }
 
