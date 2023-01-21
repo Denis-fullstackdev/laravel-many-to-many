@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.posts.store') }}">
+    <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
         @csrf
         <div @error('title') class='is-invalid' @enderror>
             <label for="title">Titolo</label>
@@ -67,6 +67,12 @@
             </div>
         </div>
         {{-- end tags --}}
+
+        <div>
+            <label for="image">
+                <input type="file" name="image">
+            </label>
+        </div>
 
         <div>
             <input type="submit" value="Invia">
